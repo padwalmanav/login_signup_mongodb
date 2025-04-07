@@ -9,13 +9,13 @@
     <h2>Login</h2>
     <form action="/login" method="post">
         <label>email:
-            <input type="email" placeholder="enter email" name="email" value="<%= locals.email%>">
+            <input type="email" placeholder="enter email" name="email" value="<%= locals.email%>" required>
         </label>
         
         <br>
 
         <label>password:
-            <input type="password" placeholder="enter password" name="password">
+            <input type="password" placeholder="enter password" name="password" required>
         </label>
 
         <br>

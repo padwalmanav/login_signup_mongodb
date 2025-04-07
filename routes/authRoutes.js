@@ -39,15 +39,16 @@ authRoutes.route('/signup')
         res.render('signup')
     })
     .post(async (req,res)=>{
-        const {name,email,password} = req.body
+        const {name,email,phone,password} = req.body
 
         const data = {
             "name":name,
             "email":email,
+            "phone no":phone,
             "password":password
         }
         
-        const isPresent = await db.collection('users').findOne({"email":email})
+        const isPresent = await db.collection('users').findOne({$or:[{"email":email},{"phone no":phone}]})
         console.log(isPresent)
 
         if(isPresent)
