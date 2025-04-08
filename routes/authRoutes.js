@@ -22,14 +22,13 @@ authRoutes.route('/login')
         }
         
         const isValid = await db.collection('users').findOne(data)
-        console.log(isValid)
 
         if(isValid)
         {
             res.render('home')
         }
         else{
-            res.send('Invalid email or password')
+            return res.json({success:false, message:"Invalid Creds"})
         }
     })
     
@@ -49,7 +48,6 @@ authRoutes.route('/signup')
         }
         
         const isPresent = await db.collection('users').findOne({$or:[{"email":email},{"phone no":phone}]})
-        console.log(isPresent)
 
         if(isPresent)
         {
